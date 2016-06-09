@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		7CC8D1CC1D09ABD500AF87F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8D1CB1D09ABD500AF87F5 /* AppDelegate.swift */; };
-		7CC8D1CE1D09ABD500AF87F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8D1CD1D09ABD500AF87F5 /* ViewController.swift */; };
+		7CC8D1CE1D09ABD500AF87F5 /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8D1CD1D09ABD500AF87F5 /* FaceViewController.swift */; };
 		7CC8D1D11D09ABD500AF87F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC8D1CF1D09ABD500AF87F5 /* Main.storyboard */; };
 		7CC8D1D31D09ABD500AF87F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CC8D1D21D09ABD500AF87F5 /* Assets.xcassets */; };
 		7CC8D1D61D09ABD500AF87F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC8D1D41D09ABD500AF87F5 /* LaunchScreen.storyboard */; };
+		7CC8D1DF1D09AD7D00AF87F5 /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8D1DE1D09AD7D00AF87F5 /* FaceView.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7CC8D1C81D09ABD500AF87F5 /* FaceIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC8D1CB1D09ABD500AF87F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7CC8D1CD1D09ABD500AF87F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7CC8D1CD1D09ABD500AF87F5 /* FaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewController.swift; sourceTree = "<group>"; };
 		7CC8D1D01D09ABD500AF87F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7CC8D1D21D09ABD500AF87F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CC8D1D51D09ABD500AF87F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CC8D1D71D09ABD500AF87F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CC8D1DE1D09AD7D00AF87F5 /* FaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,23 @@
 		7CC8D1CA1D09ABD500AF87F5 /* FaceIt */ = {
 			isa = PBXGroup;
 			children = (
-				7CC8D1CB1D09ABD500AF87F5 /* AppDelegate.swift */,
-				7CC8D1CD1D09ABD500AF87F5 /* ViewController.swift */,
+				7CC8D1CD1D09ABD500AF87F5 /* FaceViewController.swift */,
 				7CC8D1CF1D09ABD500AF87F5 /* Main.storyboard */,
-				7CC8D1D21D09ABD500AF87F5 /* Assets.xcassets */,
-				7CC8D1D41D09ABD500AF87F5 /* LaunchScreen.storyboard */,
-				7CC8D1D71D09ABD500AF87F5 /* Info.plist */,
+				7CC8D1DE1D09AD7D00AF87F5 /* FaceView.swift */,
+				7CC8D1DD1D09ACBC00AF87F5 /* Supporting Files */,
 			);
 			path = FaceIt;
+			sourceTree = "<group>";
+		};
+		7CC8D1DD1D09ACBC00AF87F5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7CC8D1D41D09ABD500AF87F5 /* LaunchScreen.storyboard */,
+				7CC8D1D71D09ABD500AF87F5 /* Info.plist */,
+				7CC8D1D21D09ABD500AF87F5 /* Assets.xcassets */,
+				7CC8D1CB1D09ABD500AF87F5 /* AppDelegate.swift */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +146,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CC8D1CE1D09ABD500AF87F5 /* ViewController.swift in Sources */,
+				7CC8D1CE1D09ABD500AF87F5 /* FaceViewController.swift in Sources */,
 				7CC8D1CC1D09ABD500AF87F5 /* AppDelegate.swift in Sources */,
+				7CC8D1DF1D09AD7D00AF87F5 /* FaceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
