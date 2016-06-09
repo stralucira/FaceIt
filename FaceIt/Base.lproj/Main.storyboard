@@ -23,10 +23,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5Xd-id-sLC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Dfi-OA-RXr"/>
-                            <constraint firstAttribute="trailing" secondItem="5Xd-id-sLC" secondAttribute="trailing" id="Kfp-ov-ARC"/>
-                            <constraint firstItem="5Xd-id-sLC" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="cMc-Ik-fLT"/>
-                            <constraint firstItem="5Xd-id-sLC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="edZ-40-kff"/>
+                            <constraint firstItem="5Xd-id-sLC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DqR-L3-xlb"/>
+                            <constraint firstItem="5Xd-id-sLC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OIc-fs-mK8"/>
+                            <constraint firstAttribute="trailing" secondItem="5Xd-id-sLC" secondAttribute="trailing" id="RKI-Gp-fIJ"/>
+                            <constraint firstItem="5Xd-id-sLC" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="sUz-Ab-Dj7"/>
                         </constraints>
                     </view>
                 </viewController>

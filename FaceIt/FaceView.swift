@@ -10,11 +10,34 @@ import UIKit
 
 class FaceView: UIView {
 
+    var lineWidth: CGFloat = 3.0 { didSet { setNeedsDisplay() } }
+    var color: UIColor = UIColor.blueColor() { didSet { setNeedsDisplay() } }
+    var scale: CGFloat = 0.90 { didSet { setNeedsDisplay() } }
+    
+    var width: CGFloat {
+        return bounds.size.width
+    }
+    
+    var height: CGFloat {
+        return bounds.size.height
+    }
+    
+    var faceRadius: CGFloat {
+        return min(width,height) / 2
+    }
+    
+    
+    private struct Ratios {
+        static let FaceRadiusToEyeRadiusRatio: CGFloat = 10
+        static let FaceRadiusToEyeOffsetRatio: CGFloat = 3
+        static let FaceRadiusToEyeSeparationRatio: CGFloat = 1.5
+        static let FaceRadiusToMouthWidthRatio: CGFloat = 1
+        static let FaceRadiusToMouthHeightRatio: CGFloat = 3
+        static let FaceRadiusToMouthOffsetRatio: CGFloat = 3
+    }
+    
     override func drawRect(rect: CGRect) {
         // Drawing code
-        
-        let width = bounds.size.width
-        let height = bounds.size.height
         
         let faceRadius = min(width,height) / 2
         
@@ -28,4 +51,5 @@ class FaceView: UIView {
         
         face.stroke()
     }
+    
 }
