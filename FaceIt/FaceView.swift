@@ -26,6 +26,10 @@ class FaceView: UIView {
         return min(width,height) / 2
     }
     
+    var faceCenter: CGPoint {
+        return convertPoint(center, fromView: superview)
+    }
+    
     
     private struct Ratios {
         static let FaceRadiusToEyeRadiusRatio: CGFloat = 10
@@ -36,6 +40,11 @@ class FaceView: UIView {
         static let FaceRadiusToMouthOffsetRatio: CGFloat = 3
     }
     
+    private enum Eye {
+        case Left
+        case Right
+    }
+    
     override func drawRect(rect: CGRect) {
         // Drawing code
         
@@ -43,13 +52,66 @@ class FaceView: UIView {
         
         let faceCenter = CGPoint(x: bounds.midX, y:bounds.midY)
         
-        let face = UIBezierPath(arcCenter: faceCenter, radius: faceRadius, startAngle: 0, endAngle: CGFloat(2*M_PI) , clockwise: true)
+        let facePath = UIBezierPath(arcCenter: faceCenter, radius: faceRadius, startAngle: 0, endAngle: CGFloat(2*M_PI) , clockwise: true)
         
-        face.lineWidth = 5.0
+        facePath.lineWidth = lineWidth
+        color.set()
+        facePath.stroke()
         
-        UIColor.greenColor().setStroke()
+        bezierPathForEye(.Left).stroke()
+        bezierPathForEye(.Right).stroke()
         
-        face.stroke()
+        bezierPathForMouth().stroke()
+        
+        
+    }
+    
+    private func bezierPathForEye(whichEye: Eye) -> UIBezierPath {
+        
+        let eyeRadius = faceRadius / Ratios.FaceRadiusToEyeRadiusRatio
+        let eyeVerticalOffset = faceRadius / Ratios.FaceRadiusToEyeOffsetRatio
+        let eyeHorizontalSeperation = faceRadius / Ratios.FaceRadiusToEyeSeparationRatio
+        
+        var eyeCenter = faceCenter
+        eyeCenter.y -= eyeVerticalOffset
+        switch whichEye {
+            case .Left: eyeCenter.x -= eyeHorizontalSeperation / 2
+            case .Right: eyeCenter.x += eyeHorizontalSeperation / 2
+        }
+        let eyePath = UIBezierPath(arcCenter: eyeCenter, radius: eyeRadius, startAngle: 0, endAngle: CGFloat(2*M_PI), clockwise: true)
+            
+        eyePath.lineWidth = lineWidth
+        
+        return eyePath
+    }
+    
+    private func bezierPathForMouth() -> UIBezierPath {
+        
+        let mouthHeight = faceRadius / Ratios.FaceRadiusToMouthHeightRatio
+        let mouthWidth = faceRadius / Ratios.FaceRadiusToMouthWidthRatio
+        let mouthVerticalOffset = faceRadius / Ratios.FaceRadiusToMouthOffsetRatio
+        
+        let mouthRect = CGRect(
+            x: faceCenter.x - mouthWidth/2,
+            y: faceCenter.y + mouthVerticalOffset,
+            width: mouthWidth,
+            height: mouthHeight)
+        
+        let mouthCurvature: Double = 1
+        
+        let smileOffset = CGFloat(max(-1,min(mouthCurvature,1)))*mouthRect.height
+        
+        let start = CGPoint(x: mouthRect.minX, y: mouthRect.minY)
+        let end = CGPoint(x: mouthRect.maxX, y: mouthRect.minY)
+        let cp1 = CGPoint(x: mouthRect.minX + mouthRect.width/3, y: mouthRect.minY + smileOffset)
+        let cp2 = CGPoint(x: mouthRect.maxX - mouthRect.width/3, y: mouthRect.minY + smileOffset)
+        
+        let mouthPath = UIBezierPath()
+        mouthPath.moveToPoint(start)
+        mouthPath.addCurveToPoint(end, controlPoint1: cp1, controlPoint2: cp2)
+        mouthPath.lineWidth = lineWidth
+        
+        return mouthPath
     }
     
 }
