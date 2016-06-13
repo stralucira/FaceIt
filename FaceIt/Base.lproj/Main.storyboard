@@ -29,6 +29,9 @@
                             <constraint firstItem="5Xd-id-sLC" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="sUz-Ab-Dj7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="faceView" destination="5Xd-id-sLC" id="1Uk-Mn-Bar"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

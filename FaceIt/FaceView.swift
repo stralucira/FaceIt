@@ -21,6 +21,8 @@ class FaceView: UIView {
     var eyesOpen: Bool = true { didSet { setNeedsDisplay() } }
     @IBInspectable
     var eyebrowTilt: Double = 0.0 { didSet { setNeedsDisplay() } }  //-1 full furrow, 1 fully relaxed
+    @IBInspectable
+    var mouthCurvature: Double = 1.0 { didSet { setNeedsDisplay() } }
     
     var width: CGFloat {
         return bounds.size.width
@@ -145,8 +147,6 @@ class FaceView: UIView {
             y: faceCenter.y + mouthVerticalOffset,
             width: mouthWidth,
             height: mouthHeight)
-        
-        let mouthCurvature: Double = -1
         
         let smileOffset = CGFloat(max(-1,min(mouthCurvature,1)))*mouthRect.height
         
