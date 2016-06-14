@@ -33,10 +33,8 @@ class FaceViewController: UIViewController {
     
     @IBAction func toggleEyes(recognizer: UITapGestureRecognizer) {
         
-        
-        
         if recognizer.state == .Ended  {
-            print("I'm in")
+            //print("I'm in")
             switch expression.eyes{
             case .Open:
                 expression.eyes = .Closed
