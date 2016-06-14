@@ -28,7 +28,7 @@ class FaceView: UIView {
         
         switch recognizer.state {
         case .Changed, .Ended:
-            print("I'm in changed or ended")
+            //print("I'm in changed or ended")
             self.scale *= recognizer.scale
             recognizer.scale = 1.0
         default:

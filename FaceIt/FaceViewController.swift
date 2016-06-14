@@ -10,7 +10,7 @@ import UIKit
 
 class FaceViewController: UIViewController {
 
-    var expression = FacialExpression(eyes: .Open, eyeBrows: .Normal, mouth: .Smile){ didSet { updateUI() } }
+    var expression = FacialExpression(eyes: .Open, eyeBrows: .Relaxed, mouth: .Smile){ didSet { updateUI() } }
     
     
     @IBOutlet weak var faceView: FaceView!{
@@ -26,11 +26,28 @@ class FaceViewController: UIViewController {
             sadderSwipeGestureRecognizer.direction = .Down
             faceView.addGestureRecognizer(sadderSwipeGestureRecognizer)
             
-            
             updateUI()
             
         }
     }
+    
+    @IBAction func toggleEyes(recognizer: UITapGestureRecognizer) {
+        
+        
+        
+        if recognizer.state == .Ended  {
+            print("I'm in")
+            switch expression.eyes{
+            case .Open:
+                expression.eyes = .Closed
+            case .Closed:
+                expression.eyes = .Open
+            case .Squinting:
+                break
+            }
+        }
+    }
+    
     
     @objc func increaseHappiness() {
         expression.mouth = expression.mouth.happierMouth()
