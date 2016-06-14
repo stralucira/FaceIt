@@ -65,9 +65,16 @@ class FaceViewController: UIViewController {
         default:
             break
         }
-        
     }
     
+    @IBAction func randomizeColor() {
+        
+        let hue = CGFloat(Float(arc4random()) / Float(UINT32_MAX))
+        
+        let randomColor = UIColor(hue: hue, saturation: 0.8, brightness: 1.0, alpha: 0.8)
+        
+        faceView.color = randomColor
+    }
     
     @objc func increaseHappiness() {
         expression.mouth = expression.mouth.happierMouth()
