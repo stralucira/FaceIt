@@ -24,6 +24,18 @@ class FaceView: UIView {
     @IBInspectable
     var mouthCurvature: Double = 1.0 { didSet { setNeedsDisplay() } }
     
+    func changeScale(recognizer: UIPinchGestureRecognizer){
+        
+        switch recognizer.state {
+        case .Changed, .Ended:
+            self.scale *= recognizer.scale
+            recognizer.scale = 1.0
+        default:
+            break
+        }
+    }
+    
+    
     var width: CGFloat {
         return bounds.size.width
     }
