@@ -24,10 +24,11 @@ class FaceView: UIView {
     @IBInspectable
     var mouthCurvature: Double = 1.0 { didSet { setNeedsDisplay() } }
     
-    func changeScale(recognizer: UIPinchGestureRecognizer){
+    @objc func changeScale(recognizer: UIPinchGestureRecognizer){
         
         switch recognizer.state {
         case .Changed, .Ended:
+            print("I'm in changed or ended")
             self.scale *= recognizer.scale
             recognizer.scale = 1.0
         default:
@@ -44,11 +45,11 @@ class FaceView: UIView {
         return bounds.size.height
     }
     
-    var faceRadius: CGFloat {
-        return min(width,height) / 2
+    private var faceRadius: CGFloat {
+        return (min(width,height) / 2)*scale
     }
     
-    var faceCenter: CGPoint {
+    private var faceCenter: CGPoint {
         return convertPoint(center, fromView: superview)
     }
     
@@ -69,10 +70,6 @@ class FaceView: UIView {
     
     override func drawRect(rect: CGRect) {
         // Drawing code
-        
-        let faceRadius = min(width,height) / 2
-        
-        let faceCenter = CGPoint(x: bounds.midX, y:bounds.midY)
         
         let facePath = UIBezierPath(arcCenter: faceCenter, radius: faceRadius, startAngle: 0, endAngle: CGFloat(2*M_PI) , clockwise: true)
         
