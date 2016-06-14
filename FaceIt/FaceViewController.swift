@@ -12,8 +12,8 @@ class FaceViewController: UIViewController {
 
     var expression = FacialExpression(eyes: .Open, eyeBrows: .Relaxed, mouth: .Smile){ didSet { updateUI() } }
     
-    
     @IBOutlet weak var faceView: FaceView!{
+        
         didSet {
             
             faceView.addGestureRecognizer(UIPinchGestureRecognizer(target: faceView, action: Selector("changeScale:")))
@@ -44,6 +44,28 @@ class FaceViewController: UIViewController {
                 break
             }
         }
+    }
+    
+    
+    @IBAction func changeBrows(recognizer: UIRotationGestureRecognizer) {
+        
+        switch recognizer.state {
+            
+        case .Changed:
+            
+            //print("\(recognizer.rotation)")
+            if (recognizer.rotation > 0.78539816339745) {
+                expression.eyeBrows = expression.eyeBrows.moreRelaxedBrow()
+                recognizer.rotation = 0
+            } else if (recognizer.rotation < -0.78539816339745) {
+                expression.eyeBrows = expression.eyeBrows.moreFurrowedBrow()
+                recognizer.rotation = 0
+            }
+            
+        default:
+            break
+        }
+        
     }
     
     

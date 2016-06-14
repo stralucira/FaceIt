@@ -22,6 +22,7 @@
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="hHj-CI-V9X" appends="YES" id="wKc-Bo-wYi"/>
+                                    <outletCollection property="gestureRecognizers" destination="s6x-bH-1VW" appends="YES" id="tQo-4l-GFl"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -44,6 +45,11 @@
                         <action selector="toggleEyes:" destination="BYZ-38-t0r" id="OSz-cP-YYB"/>
                     </connections>
                 </tapGestureRecognizer>
+                <rotationGestureRecognizer id="s6x-bH-1VW">
+                    <connections>
+                        <action selector="changeBrows:" destination="BYZ-38-t0r" id="DD6-2a-Tsj"/>
+                    </connections>
+                </rotationGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="514" y="418"/>
         </scene>
