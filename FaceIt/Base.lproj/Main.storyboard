@@ -21,7 +21,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWZ-fk-0nB">
                                         <rect key="frame" x="253" y="8" width="94" height="46"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                         <state key="normal" title="Kalbishe"/>
                                         <connections>
                                             <action selector="randomizeColor" destination="BYZ-38-t0r" eventType="touchUpInside" id="SgC-ts-gH8"/>
@@ -31,7 +31,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="SWZ-fk-0nB" firstAttribute="top" secondItem="5Xd-id-sLC" secondAttribute="top" constant="20" id="K5E-BI-Kny"/>
+                                    <constraint firstItem="SWZ-fk-0nB" firstAttribute="top" secondItem="5Xd-id-sLC" secondAttribute="top" constant="40" id="K5E-BI-Kny"/>
                                     <constraint firstItem="SWZ-fk-0nB" firstAttribute="centerX" secondItem="5Xd-id-sLC" secondAttribute="centerX" id="Ytm-IS-RMl"/>
                                 </constraints>
                                 <connections>
