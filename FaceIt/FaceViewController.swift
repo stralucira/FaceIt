@@ -16,18 +16,17 @@ class FaceViewController: UIViewController {
         
         didSet {
             
-            faceView.addGestureRecognizer(UIPinchGestureRecognizer(target: faceView, action: Selector("changeScale:")))
+            faceView.addGestureRecognizer(UIPinchGestureRecognizer(target: faceView, action: "changeScale:"))
             
-            let happierSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("increaseHappiness"))
+            let happierSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(FaceViewController.increaseHappiness))
             happierSwipeGestureRecognizer.direction = .Up
             faceView.addGestureRecognizer(happierSwipeGestureRecognizer)
             
-            let sadderSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("decreaseHappiness"))
+            let sadderSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(FaceViewController.decreaseHappiness))
             sadderSwipeGestureRecognizer.direction = .Down
             faceView.addGestureRecognizer(sadderSwipeGestureRecognizer)
             
             updateUI()
-            
         }
     }
     
@@ -54,10 +53,10 @@ class FaceViewController: UIViewController {
         case .Changed:
             
             //print("\(recognizer.rotation)")
-            if (recognizer.rotation > 0.78539816339745) {
+            if (recognizer.rotation > 0.38539816339745) {
                 expression.eyeBrows = expression.eyeBrows.moreRelaxedBrow()
                 recognizer.rotation = 0
-            } else if (recognizer.rotation < -0.78539816339745) {
+            } else if (recognizer.rotation < -0.38539816339745) {
                 expression.eyeBrows = expression.eyeBrows.moreFurrowedBrow()
                 recognizer.rotation = 0
             }

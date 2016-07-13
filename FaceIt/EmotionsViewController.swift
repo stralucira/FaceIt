@@ -18,7 +18,7 @@ class EmotionsViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        var destinationvc = segue.destinationViewController
+        let destinationvc = segue.destinationViewController
         
         if let facevc = destinationvc as? FaceViewController {
             if let identifier = segue.identifier {
@@ -28,11 +28,7 @@ class EmotionsViewController: UIViewController {
                         facevc.navigationItem.title = sendingButton.currentTitle
                     }
                 }
-                
             }
         }
     }
-
-    
-
 }

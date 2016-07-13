@@ -81,8 +81,8 @@
                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="5Xd-id-sLC" customClass="FaceView" customModule="FaceIt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWZ-fk-0nB">
-                                        <rect key="frame" x="253" y="8" width="94" height="46"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWZ-fk-0nB">
+                                        <rect key="frame" x="256.5" y="80" width="87" height="38"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                         <state key="normal" title="Kalbishe"/>
                                         <connections>
@@ -149,6 +149,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tdH-gc-ldC"/>
+        <segue reference="GUf-GI-MtD"/>
     </inferredMetricsTieBreakers>
 </document>

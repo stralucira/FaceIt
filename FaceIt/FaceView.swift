@@ -53,6 +53,7 @@ class FaceView: UIView {
         return convertPoint(center, fromView: superview)
     }
     
+    
     private struct Ratios {
         static let FaceRadiusToEyeRadiusRatio: CGFloat = 10
         static let FaceRadiusToEyeOffsetRatio: CGFloat = 3
@@ -63,10 +64,12 @@ class FaceView: UIView {
         static let FaceRadiusToBrowOffset: CGFloat = 5
     }
     
+    
     private enum Eye {
         case Left
         case Right
     }
+    
     
     override func drawRect(rect: CGRect) {
         // Drawing code
