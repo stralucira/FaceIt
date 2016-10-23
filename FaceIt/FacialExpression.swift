@@ -11,6 +11,7 @@ import Foundation
 // UI-independent representation of a facial expression
 
 struct FacialExpression {
+    
     enum Eyes: Int {
         case Open
         case Closed
