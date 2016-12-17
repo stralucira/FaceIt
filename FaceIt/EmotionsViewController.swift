@@ -9,16 +9,16 @@ import UIKit
 
 class EmotionsViewController: UIViewController {
 
-    private let emotions: Dictionary<String, FacialExpression> = [
-        "angry" : FacialExpression(eyes: .Closed, eyeBrows: .Furrowed, mouth: .Frown),
-        "happy" : FacialExpression(eyes: .Open, eyeBrows: .Relaxed, mouth: .Smile),
-        "worried" : FacialExpression(eyes: .Open, eyeBrows: .Relaxed, mouth: .Smirk),
-        "playful" : FacialExpression(eyes: .Open, eyeBrows: .Furrowed, mouth: .Grin),
+    fileprivate let emotions: Dictionary<String, FacialExpression> = [
+        "angry" : FacialExpression(eyes: .closed, eyeBrows: .furrowed, mouth: .frown),
+        "happy" : FacialExpression(eyes: .open, eyeBrows: .relaxed, mouth: .smile),
+        "worried" : FacialExpression(eyes: .open, eyeBrows: .relaxed, mouth: .smirk),
+        "playful" : FacialExpression(eyes: .open, eyeBrows: .furrowed, mouth: .grin),
     ]
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let destinationvc = segue.destinationViewController
+        let destinationvc = segue.destination
         
         if let facevc = destinationvc as? FaceViewController {
             if let identifier = segue.identifier {

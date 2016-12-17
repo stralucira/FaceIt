@@ -14,7 +14,7 @@ class FaceView: UIView {
     @IBInspectable
     var lineWidth: CGFloat = 3.0 { didSet { setNeedsDisplay() } }
     @IBInspectable
-    var color: UIColor = UIColor.blueColor() { didSet { setNeedsDisplay() } }
+    var color: UIColor = UIColor.blue { didSet { setNeedsDisplay() } }
     @IBInspectable
     var scale: CGFloat = 0.90 { didSet { setNeedsDisplay() } }
     @IBInspectable
@@ -24,10 +24,10 @@ class FaceView: UIView {
     @IBInspectable
     var mouthCurvature: Double = 1.0 { didSet { setNeedsDisplay() } }
     
-    @objc func changeScale(recognizer: UIPinchGestureRecognizer){
+    @objc func changeScale(_ recognizer: UIPinchGestureRecognizer){
         
         switch recognizer.state {
-        case .Changed, .Ended:
+        case .changed, .ended:
             //print("I'm in changed or ended")
             self.scale *= recognizer.scale
             recognizer.scale = 1.0
@@ -45,16 +45,16 @@ class FaceView: UIView {
         return bounds.size.height
     }
     
-    private var faceRadius: CGFloat {
+    fileprivate var faceRadius: CGFloat {
         return (min(width,height) / 2)*scale
     }
     
-    private var faceCenter: CGPoint {
-        return convertPoint(center, fromView: superview)
+    fileprivate var faceCenter: CGPoint {
+        return convert(center, from: superview)
     }
     
     
-    private struct Ratios {
+    fileprivate struct Ratios {
         static let FaceRadiusToEyeRadiusRatio: CGFloat = 10
         static let FaceRadiusToEyeOffsetRatio: CGFloat = 3
         static let FaceRadiusToEyeSeparationRatio: CGFloat = 1.5
@@ -65,13 +65,13 @@ class FaceView: UIView {
     }
     
     
-    private enum Eye {
-        case Left
-        case Right
+    fileprivate enum Eye {
+        case left
+        case right
     }
     
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         // Drawing code
         
         let facePath = UIBezierPath(arcCenter: faceCenter, radius: faceRadius, startAngle: 0, endAngle: CGFloat(2*M_PI) , clockwise: true)
@@ -80,18 +80,18 @@ class FaceView: UIView {
         color.set()
         facePath.stroke()
         
-        bezierPathForEye(.Left).stroke()
-        bezierPathForEye(.Right).stroke()
+        bezierPathForEye(.left).stroke()
+        bezierPathForEye(.right).stroke()
         
         bezierPathForMouth().stroke()
         
-        pathForBrow(.Left).stroke()
-        pathForBrow(.Right).stroke()
+        pathForBrow(.left).stroke()
+        pathForBrow(.right).stroke()
         
         
     }
     
-    private func getEyeCenter(eye: Eye) -> CGPoint {
+    fileprivate func getEyeCenter(_ eye: Eye) -> CGPoint {
         
         
         let eyeVerticalOffset = faceRadius / Ratios.FaceRadiusToEyeOffsetRatio
@@ -100,13 +100,13 @@ class FaceView: UIView {
         var eyeCenter = faceCenter
         eyeCenter.y -= eyeVerticalOffset
         switch eye {
-        case .Left: eyeCenter.x -= eyeHorizontalSeperation / 2
-        case .Right: eyeCenter.x += eyeHorizontalSeperation / 2
+        case .left: eyeCenter.x -= eyeHorizontalSeperation / 2
+        case .right: eyeCenter.x += eyeHorizontalSeperation / 2
         }
         return eyeCenter
     }
     
-    private func bezierPathForEye(whichEye: Eye) -> UIBezierPath {
+    fileprivate func bezierPathForEye(_ whichEye: Eye) -> UIBezierPath {
         
         let eyeRadius = faceRadius / Ratios.FaceRadiusToEyeRadiusRatio
         
@@ -118,20 +118,20 @@ class FaceView: UIView {
             return eyePath
         } else {
             let eyePath = UIBezierPath()
-            eyePath.moveToPoint(CGPoint(x: eyeCenter.x - eyeRadius, y: eyeCenter.y))
-            eyePath.addLineToPoint(CGPoint(x: eyeCenter.x + eyeRadius, y: eyeCenter.y))
+            eyePath.move(to: CGPoint(x: eyeCenter.x - eyeRadius, y: eyeCenter.y))
+            eyePath.addLine(to: CGPoint(x: eyeCenter.x + eyeRadius, y: eyeCenter.y))
             eyePath.lineWidth = lineWidth
             return eyePath
         }
     }//end bezierPathForEye()
     
-    private func pathForBrow(eye: Eye) -> UIBezierPath {
+    fileprivate func pathForBrow(_ eye: Eye) -> UIBezierPath {
         
         var tilt = eyebrowTilt
         switch eye {
-        case .Left:
+        case .left:
             tilt *= -1.0
-        case .Right:
+        case .right:
             break
         }
         
@@ -142,13 +142,13 @@ class FaceView: UIView {
         let browStart = CGPoint(x:browCenter.x - eyeRadius, y:browCenter.y - tiltOffset)
         let browEnd = CGPoint(x:browCenter.x + eyeRadius, y:browCenter.y + tiltOffset)
         let path = UIBezierPath()
-        path.moveToPoint(browStart)
-        path.addLineToPoint(browEnd)
+        path.move(to: browStart)
+        path.addLine(to: browEnd)
         path.lineWidth = lineWidth
         return path
     }
     
-    private func bezierPathForMouth() -> UIBezierPath {
+    fileprivate func bezierPathForMouth() -> UIBezierPath {
         
         let mouthHeight = faceRadius / Ratios.FaceRadiusToMouthHeightRatio
         let mouthWidth = faceRadius / Ratios.FaceRadiusToMouthWidthRatio
@@ -168,8 +168,8 @@ class FaceView: UIView {
         let cp2 = CGPoint(x: mouthRect.maxX - mouthRect.width/3, y: mouthRect.minY + smileOffset)
         
         let mouthPath = UIBezierPath()
-        mouthPath.moveToPoint(start)
-        mouthPath.addCurveToPoint(end, controlPoint1: cp1, controlPoint2: cp2)
+        mouthPath.move(to: start)
+        mouthPath.addCurve(to: end, controlPoint1: cp1, controlPoint2: cp2)
         mouthPath.lineWidth = lineWidth
         
         return mouthPath

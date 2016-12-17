@@ -113,6 +113,7 @@
 					7CC8D1C71D09ABD500AF87F5 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 5NCQ339E7R;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -274,6 +275,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.basaroguz.FaceIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -286,6 +288,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.basaroguz.FaceIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
