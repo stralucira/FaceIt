@@ -11,11 +11,13 @@ import UIKit
 class EyeView: UIView {
 
     var lineWidth: CGFloat = 3.0 { didSet { setNeedsDisplay() } }
+    
     var color: UIColor = UIColor.blue { didSet { setNeedsDisplay() } }
     
-    
+    // Storage variable for this variable. It's a convention.
     var _eyesOpen: Bool = true { didSet { setNeedsDisplay() } }
 
+    //
     var eyesOpen: Bool {
         get {
             return _eyesOpen

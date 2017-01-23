@@ -30,6 +30,7 @@ class FaceViewController: UIViewController {
         }
     }
     
+    // This will be removed as a functionality.
     @IBAction func toggleEyes(_ recognizer: UITapGestureRecognizer) {
         
         if recognizer.state == .ended  {
@@ -44,6 +45,25 @@ class FaceViewController: UIViewController {
             }
         }
     }
+    
+    private struct Animation {
+        static let ShakeAngle = CGFloat(M_PI/6)
+        static let ShakeDuration = 0.5
+    }
+    
+    @IBAction func headShake(_ sender: UITapGestureRecognizer) {
+        
+        UIView.animate(
+            withDuration: Animation.ShakeDuration,
+            animations: {
+            self.faceView.transform = CGAffineTransform(rotationAngle: Animation.ShakeAngle)
+            },
+            completion: { finished in
+            //What do to in here?
+            }
+        )
+    }
+    
     
     
     @IBAction func changeBrows(_ recognizer: UIRotationGestureRecognizer) {
