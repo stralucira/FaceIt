@@ -13,7 +13,6 @@ class BlinkingFaceViewController: FaceViewController {
     var blinking: Bool = false {
         
         didSet{
-        
             startBlink()
         }
     }
@@ -37,7 +36,6 @@ class BlinkingFaceViewController: FaceViewController {
                                  userInfo: nil,
                                  repeats: false)
         }
-    
     }
     
     func endBlink() {

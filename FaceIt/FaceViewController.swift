@@ -30,21 +30,21 @@ class FaceViewController: UIViewController {
         }
     }
     
-    // This will be removed as a functionality.
-    @IBAction func toggleEyes(_ recognizer: UITapGestureRecognizer) {
-        
-        if recognizer.state == .ended  {
-            //print("I'm in")
-            switch expression.eyes{
-            case .open:
-                expression.eyes = .closed
-            case .closed:
-                expression.eyes = .open
-            case .squinting:
-                break
-            }
-        }
-    }
+//    // This will be removed as a functionality.
+//    @IBAction func toggleEyes(_ recognizer: UITapGestureRecognizer) {
+//        
+//        if recognizer.state == .ended  {
+//            //print("I'm in")
+//            switch expression.eyes{
+//            case .open:
+//                expression.eyes = .closed
+//            case .closed:
+//                expression.eyes = .open
+//            case .squinting:
+//                break
+//            }
+//        }
+//    }
     
     private struct Animation {
         static let ShakeAngle = CGFloat(M_PI/6)
@@ -59,7 +59,26 @@ class FaceViewController: UIViewController {
             self.faceView.transform = CGAffineTransform(rotationAngle: Animation.ShakeAngle)
             },
             completion: { finished in
-            //What do to in here?
+                UIView.animate(
+                    withDuration: Animation.ShakeDuration,
+                    animations: {
+                        self.faceView.transform = CGAffineTransform(rotationAngle: -Animation.ShakeAngle)
+                },
+                    completion: { finished in
+                        UIView.animate(
+                            withDuration: Animation.ShakeDuration,
+                            animations: {
+                                self.faceView.transform = CGAffineTransform(rotationAngle: 0.0)
+                            },
+                            completion: { finished in
+                                //Nothing to do there, move along.
+                                
+                            }
+                        )
+                        
+                    }
+                )
+                
             }
         )
     }

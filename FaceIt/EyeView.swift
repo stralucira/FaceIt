@@ -14,6 +14,8 @@ class EyeView: UIView {
     
     var color: UIColor = UIColor.blue { didSet { setNeedsDisplay() } }
     
+    
+    
     // Storage variable for this variable. It's a convention.
     var _eyesOpen: Bool = true { didSet { setNeedsDisplay() } }
 
@@ -44,20 +46,13 @@ class EyeView: UIView {
         
         if eyesOpen {
             path = UIBezierPath(ovalIn: bounds.insetBy(dx: lineWidth/2, dy: lineWidth/2))
-            
         } else {
             path = UIBezierPath()
             path.move(to: CGPoint(x: bounds.minX, y: bounds.midY))
             path.addLine(to: CGPoint(x: bounds.maxX, y: bounds.midY))
         }
-
         path.lineWidth = lineWidth
         color.setStroke()
         path.stroke()
-        
     }
- 
-
-    
-    
 }

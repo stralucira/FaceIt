@@ -13,12 +13,32 @@ class FaceView: UIView {
     
     @IBInspectable
     var lineWidth: CGFloat = 3.0 { didSet { setNeedsDisplay() } }
+    
     @IBInspectable
-    var color: UIColor = UIColor.blue { didSet { setNeedsDisplay(); leftEye.color = color ; rightEye.color = color  } }
+    var color: UIColor = UIColor.blue {
+        didSet {
+            setNeedsDisplay()
+            leftEye.color = color
+            rightEye.color = color
+        }
+    }
+    
     @IBInspectable
-    var scale: CGFloat = 0.90 { didSet { setNeedsDisplay() } }
+    var scale: CGFloat = 0.90 {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
     @IBInspectable
-    var eyesOpen: Bool = true { didSet { leftEye.eyesOpen = eyesOpen ; rightEye.eyesOpen = eyesOpen } }
+    var eyesOpen: Bool = true {
+        didSet {
+            leftEye.eyesOpen = eyesOpen
+            rightEye.eyesOpen = eyesOpen
+        }
+    }
+    
+    
     @IBInspectable
     var eyebrowTilt: Double = 0.0 { didSet { setNeedsDisplay() } }  //-1 full furrow, 1 fully relaxed
     @IBInspectable
@@ -27,10 +47,12 @@ class FaceView: UIView {
     @objc func changeScale(_ recognizer: UIPinchGestureRecognizer){
         
         switch recognizer.state {
+        
         case .changed, .ended:
             //print("I'm in changed or ended")
             self.scale *= recognizer.scale
             recognizer.scale = 1.0
+            self.layoutSubviews()
         default:
             break
         }
@@ -75,7 +97,6 @@ class FaceView: UIView {
         static let SkullRadiusToMouthWidth: CGFloat = 1
         static let SkullRadiusToMouthHeight: CGFloat = 3
         static let SkullRadiusToMouthOffset: CGFloat = 3
-
     }
     
     
@@ -96,8 +117,8 @@ class FaceView: UIView {
         color.set()
         facePath.stroke()
         
-//        bezierPathForEye(.left).stroke()
-//        bezierPathForEye(.right).stroke()
+//      bezierPathForEye(.left).stroke()
+//      bezierPathForEye(.right).stroke()
         
         bezierPathForMouth().stroke()
         
@@ -108,7 +129,6 @@ class FaceView: UIView {
     }
     
     fileprivate func getEyeCenter(_ eye: Eye) -> CGPoint {
-        
         
         let eyeVerticalOffset = faceRadius / Ratios.FaceRadiusToEyeOffsetRatio
         let eyeHorizontalSeperation = faceRadius / Ratios.FaceRadiusToEyeSeparationRatio
@@ -150,24 +170,24 @@ class FaceView: UIView {
         positionEye(eye: rightEye, center: getEyeCenter(Eye.right))
     }
     
-    fileprivate func bezierPathForEye(_ whichEye: Eye) -> UIBezierPath {
-        
-        let eyeRadius = faceRadius / Ratios.FaceRadiusToEyeRadiusRatio
-        
-        let eyeCenter = getEyeCenter(whichEye)
-        
-        if eyesOpen {
-            let eyePath = UIBezierPath(arcCenter: eyeCenter, radius: eyeRadius, startAngle: 0, endAngle: CGFloat(2*M_PI), clockwise: true)
-            eyePath.lineWidth = lineWidth
-            return eyePath
-        } else {
-            let eyePath = UIBezierPath()
-            eyePath.move(to: CGPoint(x: eyeCenter.x - eyeRadius, y: eyeCenter.y))
-            eyePath.addLine(to: CGPoint(x: eyeCenter.x + eyeRadius, y: eyeCenter.y))
-            eyePath.lineWidth = lineWidth
-            return eyePath
-        }
-    }//end bezierPathForEye()
+//    fileprivate func bezierPathForEye(_ whichEye: Eye) -> UIBezierPath {
+//        
+//        let eyeRadius = faceRadius / Ratios.FaceRadiusToEyeRadiusRatio
+//        
+//        let eyeCenter = getEyeCenter(whichEye)
+//        
+//        if eyesOpen {
+//            let eyePath = UIBezierPath(arcCenter: eyeCenter, radius: eyeRadius, startAngle: 0, endAngle: CGFloat(2*M_PI), clockwise: true)
+//            eyePath.lineWidth = lineWidth
+//            return eyePath
+//        } else {
+//            let eyePath = UIBezierPath()
+//            eyePath.move(to: CGPoint(x: eyeCenter.x - eyeRadius, y: eyeCenter.y))
+//            eyePath.addLine(to: CGPoint(x: eyeCenter.x + eyeRadius, y: eyeCenter.y))
+//            eyePath.lineWidth = lineWidth
+//            return eyePath
+//        }
+//    }//end bezierPathForEye()
     
     fileprivate func pathForBrow(_ eye: Eye) -> UIBezierPath {
         

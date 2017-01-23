@@ -84,32 +84,28 @@
                         <subviews>
                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="5Xd-id-sLC" customClass="FaceView" customModule="FaceIt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWZ-fk-0nB">
-                                        <rect key="frame" x="330.5" y="80" width="107" height="38"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                        <state key="normal" title="randomize"/>
-                                        <connections>
-                                            <action selector="randomizeColor" destination="BYZ-38-t0r" eventType="touchUpInside" id="SgC-ts-gH8"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstItem="SWZ-fk-0nB" firstAttribute="top" secondItem="5Xd-id-sLC" secondAttribute="top" constant="80" id="K5E-BI-Kny"/>
-                                    <constraint firstItem="SWZ-fk-0nB" firstAttribute="centerX" secondItem="5Xd-id-sLC" secondAttribute="centerX" id="Ytm-IS-RMl"/>
-                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="hHj-CI-V9X" appends="YES" id="wKc-Bo-wYi"/>
                                     <outletCollection property="gestureRecognizers" destination="s6x-bH-1VW" appends="YES" id="tQo-4l-GFl"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWZ-fk-0nB">
+                                <rect key="frame" x="328" y="72" width="112" height="39"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="randomize"/>
+                                <connections>
+                                    <action selector="randomizeColor" destination="BYZ-38-t0r" eventType="touchUpInside" id="SgC-ts-gH8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="SWZ-fk-0nB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0gJ-zC-Lv9"/>
                             <constraint firstItem="5Xd-id-sLC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DqR-L3-xlb"/>
+                            <constraint firstItem="SWZ-fk-0nB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="FGK-43-AyU"/>
                             <constraint firstItem="5Xd-id-sLC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OIc-fs-mK8"/>
                             <constraint firstAttribute="trailing" secondItem="5Xd-id-sLC" secondAttribute="trailing" id="RKI-Gp-fIJ"/>
                             <constraint firstItem="5Xd-id-sLC" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="sUz-Ab-Dj7"/>
