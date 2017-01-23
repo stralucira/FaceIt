@@ -16,6 +16,7 @@
 		7CC8D1D31D09ABD500AF87F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CC8D1D21D09ABD500AF87F5 /* Assets.xcassets */; };
 		7CC8D1D61D09ABD500AF87F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC8D1D41D09ABD500AF87F5 /* LaunchScreen.storyboard */; };
 		7CC8D1DF1D09AD7D00AF87F5 /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8D1DE1D09AD7D00AF87F5 /* FaceView.swift */; };
+		7CE69CFF1E33D400004835D4 /* EyeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE69CFE1E33D400004835D4 /* EyeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		7CC8D1D51D09ABD500AF87F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CC8D1D71D09ABD500AF87F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CC8D1DE1D09AD7D00AF87F5 /* FaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceView.swift; sourceTree = "<group>"; };
+		7CE69CFE1E33D400004835D4 /* EyeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EyeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				7C1AF7271D2E448000A7311E /* EmotionsViewController.swift */,
 				7C004C501D0EBE66004771E0 /* FacialExpression.swift */,
 				7CC8D1DE1D09AD7D00AF87F5 /* FaceView.swift */,
+				7CE69CFE1E33D400004835D4 /* EyeView.swift */,
 				7CC8D1DD1D09ACBC00AF87F5 /* Supporting Files */,
 			);
 			path = FaceIt;
@@ -156,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CE69CFF1E33D400004835D4 /* EyeView.swift in Sources */,
 				7CC8D1CE1D09ABD500AF87F5 /* FaceViewController.swift in Sources */,
 				7C004C511D0EBE66004771E0 /* FacialExpression.swift in Sources */,
 				7C2C1FD71E30E510009935E0 /* BlinkingFaceViewController.swift in Sources */,

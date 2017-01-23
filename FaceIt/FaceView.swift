@@ -14,11 +14,11 @@ class FaceView: UIView {
     @IBInspectable
     var lineWidth: CGFloat = 3.0 { didSet { setNeedsDisplay() } }
     @IBInspectable
-    var color: UIColor = UIColor.blue { didSet { setNeedsDisplay() } }
+    var color: UIColor = UIColor.blue { didSet { setNeedsDisplay(); leftEye.color = color ; rightEye.color = color  } }
     @IBInspectable
     var scale: CGFloat = 0.90 { didSet { setNeedsDisplay() } }
     @IBInspectable
-    var eyesOpen: Bool = true { didSet { setNeedsDisplay() } }
+    var eyesOpen: Bool = true { didSet { leftEye.eyesOpen = eyesOpen ; rightEye.eyesOpen = eyesOpen } }
     @IBInspectable
     var eyebrowTilt: Double = 0.0 { didSet { setNeedsDisplay() } }  //-1 full furrow, 1 fully relaxed
     @IBInspectable
@@ -36,6 +36,13 @@ class FaceView: UIView {
         }
     }
     
+    private var skullRadius: CGFloat {
+        return min(bounds.size.width, bounds.size.height) / 2 * scale
+    }
+    private var skullCenter: CGPoint {
+        return CGPoint(x: bounds.midX, y: bounds.midY)
+    }
+
     
     var width: CGFloat {
         return bounds.size.width
@@ -62,6 +69,13 @@ class FaceView: UIView {
         static let FaceRadiusToMouthHeightRatio: CGFloat = 3
         static let FaceRadiusToMouthOffsetRatio: CGFloat = 3
         static let FaceRadiusToBrowOffset: CGFloat = 5
+        
+        static let SkullRadiusToEyeOffset: CGFloat = 3
+        static let SkullRadiusToEyeRadius: CGFloat = 10
+        static let SkullRadiusToMouthWidth: CGFloat = 1
+        static let SkullRadiusToMouthHeight: CGFloat = 3
+        static let SkullRadiusToMouthOffset: CGFloat = 3
+
     }
     
     
@@ -71,6 +85,8 @@ class FaceView: UIView {
     }
     
     
+    // draw function exists in UIView classes.
+    // Only update draw() if you have custom drawing and stroke()
     override func draw(_ rect: CGRect) {
         // Drawing code
         
@@ -80,8 +96,8 @@ class FaceView: UIView {
         color.set()
         facePath.stroke()
         
-        bezierPathForEye(.left).stroke()
-        bezierPathForEye(.right).stroke()
+//        bezierPathForEye(.left).stroke()
+//        bezierPathForEye(.right).stroke()
         
         bezierPathForMouth().stroke()
         
@@ -104,6 +120,34 @@ class FaceView: UIView {
         case .right: eyeCenter.x += eyeHorizontalSeperation / 2
         }
         return eyeCenter
+    }
+    
+    private lazy var leftEye: EyeView = self.createEye()
+    private lazy var rightEye: EyeView = self.createEye()
+    
+    
+    private func createEye() -> EyeView {
+        let eye = EyeView()
+        eye.isOpaque = false
+        eye.color = color
+        eye.lineWidth = lineWidth
+        self.addSubview(eye)
+        return eye
+    }
+    
+    private func positionEye(eye: EyeView, center: CGPoint) {
+        
+        let size = skullRadius / Ratios.SkullRadiusToEyeRadius * 2
+        eye.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: size, height: size))
+        eye.center = center
+    }
+    
+    // Default function that gets called after initiation of the class.
+    // Positioning code can only be called in this function.
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        positionEye(eye: leftEye, center: getEyeCenter(Eye.left))
+        positionEye(eye: rightEye, center: getEyeCenter(Eye.right))
     }
     
     fileprivate func bezierPathForEye(_ whichEye: Eye) -> UIBezierPath {

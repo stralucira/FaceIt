@@ -24,20 +24,24 @@ class BlinkingFaceViewController: FaceViewController {
     }
     
     func startBlink() {
+        
+        //if the system is in a blinking state ;)
+
         if blinking {
             faceView.eyesOpen = false
             
             //after a moment open them again
-            
             Timer.scheduledTimer(timeInterval: BlinkRate.ClosedDuration,
                                  target: self,
                                  selector: #selector(endBlink),
                                  userInfo: nil,
                                  repeats: false)
         }
+    
     }
     
     func endBlink() {
+        
         faceView.eyesOpen = true
         
         Timer.scheduledTimer(timeInterval: BlinkRate.OpenDuration,
@@ -46,6 +50,9 @@ class BlinkingFaceViewController: FaceViewController {
                              userInfo: nil,
                              repeats: false)
     }
+    
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
