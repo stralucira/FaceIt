@@ -16,7 +16,7 @@ class FaceViewController: UIViewController {
         
         didSet {
             
-            faceView.addGestureRecognizer(UIPinchGestureRecognizer(target: faceView, action: "changeScale:"))
+            faceView.addGestureRecognizer(UIPinchGestureRecognizer(target: faceView, action: Selector(("changeScale:"))))
             
             let happierSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(FaceViewController.increaseHappiness))
             happierSwipeGestureRecognizer.direction = .up
